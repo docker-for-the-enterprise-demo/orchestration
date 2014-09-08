@@ -1,0 +1,31 @@
+database:
+  build: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD:
+    MYSQL_DATABASE: demo
+
+restwebappservice:
+  image: dockerfile/java:oracle-java8
+  volumes_from:
+    - restwebapp
+  environment:
+    MYSQL_ROOT_PASSWORD:
+  ports:
+    - "8080:8080"
+  links:
+    - database
+  command: >
+    /bin/bash -c '
+    echo --spring.datasource.password=$MYSQL_ROOT_PASSWORD 
+    --spring.datasource.url="jdbc:mysql://$DOCKERFORTHEENTERPRISE_DATABASE_1_PORT_3306_TCP_ADDR/demo" 
+    $(printenv) 
+    && java -jar app.jar
+    --spring.datasource.url="jdbc:mysql://$DOCKERFORTHEENTERPRISE_DATABASE_1_PORT_3306_TCP_ADDR/demo"
+    --spring.datasource.username=root 
+    --spring.datasource.password=$MYSQL_ROOT_PASSWORD'
+
+restwebapp:
+  build: simple-spring-app-data
+  volumes:
+    - /data
+
