@@ -1,5 +1,5 @@
 database:
-  build: mysql
+  image: orchardup/mysql
   environment:
     MYSQL_ROOT_PASSWORD:
     MYSQL_DATABASE: demo
