@@ -7,7 +7,7 @@ database:
 restwebappservice:
   image: dockerfile/java:oracle-java8
   volumes_from:
-    - restwebapp
+    - applicationcode
   environment:
     MYSQL_ROOT_PASSWORD:
   ports:
@@ -24,8 +24,8 @@ restwebappservice:
     --spring.datasource.username=root 
     --spring.datasource.password=$MYSQL_ROOT_PASSWORD'
 
-restwebapp:
-  build: simple-spring-app-data
+applicationcode:
+  build: app-builder
   volumes:
     - /data
 
