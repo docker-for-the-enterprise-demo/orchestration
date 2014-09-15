@@ -16,13 +16,13 @@ restwebappservice:
     - database
   command: >
     /bin/bash -c '
-    echo --spring.datasource.password=$MYSQL_ROOT_PASSWORD 
+    echo --spring.datasource.password="$MYSQL_ROOT_PASSWORD"
     --spring.datasource.url="jdbc:mysql://$DOCKERFORTHEENTERPRISE_DATABASE_1_PORT_3306_TCP_ADDR/demo" 
     $(printenv) 
     && java -jar app.jar
     --spring.datasource.url="jdbc:mysql://$DOCKERFORTHEENTERPRISE_DATABASE_1_PORT_3306_TCP_ADDR/demo"
     --spring.datasource.username=root 
-    --spring.datasource.password=$MYSQL_ROOT_PASSWORD'
+    --spring.datasource.password="$MYSQL_ROOT_PASSWORD"'
 
 applicationcode:
   # build: app-builder
