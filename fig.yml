@@ -25,7 +25,8 @@ restwebappservice:
     --spring.datasource.password=$MYSQL_ROOT_PASSWORD'
 
 applicationcode:
-  build: app-builder
+  # build: app-builder
+  image: zanegrey/simple-spring-rest-app-builder
   volumes:
     - /data
 
