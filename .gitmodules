@@ -1,3 +1,6 @@
 [submodule "app-builder"]
 	path = app-builder
 	url = https://github.com/docker-for-the-enterprise-demo/simple-spring-rest-app-builder.git
+[submodule "esb-builder"]
+	path = esb-builder
+	url = git@github.com:docker-for-the-enterprise-demo/simple-esb-builder.git
